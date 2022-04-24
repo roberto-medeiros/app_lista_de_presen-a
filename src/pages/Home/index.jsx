@@ -1,30 +1,41 @@
-import './styles.css'
-import { Card } from '../../components/Card'
-import { useState } from 'react'
+import React, { useState } from "react";
+
+import "./styles.css";
+import { Card } from "../../components/Card";
 
 export function Home() {
-  const [studentName, setStudentName] = useState("")
+  const [studentName, setStudentName] = useState("");
 
+  const [students, setStudents] = useState([]);
+
+  function handleAddStudent() {
+    const newStudent = {
+      name: studentName,
+      time: new Date().toLocaleTimeString("pt-BR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      }),
+    };
+
+    setStudents((prevState) => [...prevState, newStudent]);
+  }
 
   return (
     <div className="container">
-     <h1>Lista de Presença</h1>
-     <h3>Nome: {studentName}</h3>
-     <input 
-     type="text" 
-     placeholder = "Digite seu nome..."
-     onChange = {(e) => setStudentName(e.target.value)}
-     />
-     
-     <button type='text'>Adicionar</button>
-
-    {/* Importantdo componente Card */}
-     <Card name="Rodrigo" time="10:55:25" />
-     <Card name="João" time="11:00:10" />
-     <Card name="Ana" time="12:10:33" />
-
+      <h1>Lista de Presença</h1>
+      <input
+        type="text"
+        placeholder="Digite o nome..."
+        onChange={(e) => setStudentName(e.target.value)}
+      />
+      <button type="button" onClick={handleAddStudent}>
+        Adicionar
+      </button>
+      {/* Importantdo componente Card */}
+      {students.map((student) => (
+        <Card name={student.name} time={student.time} />
+      ))}
     </div>
-    
-  )
+  );
 }
-

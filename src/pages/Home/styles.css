@@ -5,9 +5,15 @@
 }
 
 .container h1 {
-  margin: 84px 0 24px;
+  margin: 84px 0 15px;
   color: rgba(255, 255, 255, 0.918);
 }
+
+.container h3 {
+  margin: 2px 0 24px;
+  color: rgba(255, 255, 255, 0.918);
+}
+
 
 .container input {
   width: 50%;

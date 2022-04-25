@@ -2,12 +2,25 @@ import React, { useState, useEffect } from "react";
 
 
 import "./styles.css";
-import { Card } from "../../components/Card";
+              //Typescript Cardprops que foi importado do componente Card
+import { Card, CardProps } from "../../components/Card";
+
+//Typescript Tipando Resposta de API
+type ProfileResponse = {
+  name: string;
+  avatar_url: string;
+}
+
+type User = {
+  name: string;
+  avatar: string;
+}
 
 export function Home() {
   const [studentName, setStudentName] = useState("");
-  const [students, setStudents] = useState([]);
-  const [user, setUser] = useState({name:'', avatar:''});
+                                          //Typescript
+  const [students, setStudents] = useState<CardProps[]>([]);
+  const [user, setUser] = useState<User>({} as User);
 
 //Função para adiconar estudante na lista
   function handleAddStudent() {
@@ -41,7 +54,8 @@ export function Home() {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch("https://api.github.com/users/roberto-medeiros");
-      const data = await response.json();
+      //                               Usando Tipagem de resposta da API
+      const data = await response.json() as ProfileResponse;
       console.log("DADOS =>", data);
 
       setUser({

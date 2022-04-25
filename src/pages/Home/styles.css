@@ -4,9 +4,27 @@
   flex-direction: column;
 }
 
-.container h1 {
+.container header {
+  width: 50%;
   margin: 84px 0 24px;
-  color: rgba(255, 255, 255, 0.918);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #ffffffea;
+}
+
+.container header img {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  margin-left: 7px;
+}
+
+.container header div {
+  display: flex;
+  align-items: center;
 }
 
 .container input {

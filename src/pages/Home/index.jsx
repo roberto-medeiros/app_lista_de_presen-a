@@ -9,6 +9,7 @@ export function Home() {
   const [students, setStudents] = useState([]);
   const [user, setUser] = useState({name:'', avatar:''});
 
+//Função para adiconar estudante na lista
   function handleAddStudent() {
     const newStudent = {
       name: studentName,
@@ -58,6 +59,7 @@ export function Home() {
       <header>
         <h1>Lista de Presença</h1>
         <div>
+          {/* Usando conteúdo dinamico, vindo da API do Github */}
           <strong>{user.name}</strong>
           <img src={user.avatar} alt="Foto de perfil" />
         </div>
